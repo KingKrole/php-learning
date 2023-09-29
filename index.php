@@ -12,50 +12,54 @@
     <h1>Recommended Books</h1>
 
     <?php
-    $books = [
+    $movies = [
         [
-            'name' => 'Project Hail Mary',
-            'author' => 'Andy Weir',
-            'releaseYear' => 2021,
-            'purchaseUrl' => 'http:??example.com'
+            'name' => 'Star Wars: A New Hope',
+            'director' => 'George Lucas',
+            'releaseYear' => 1977,
         ],
 
         [
-            'name' => 'Do Androids Dream of Electric Sheep',
-            'author' => 'Philip k. Dick',
-            'releaseYear' => 1968,
-            'purchaseUrl' =>  'http://examples.com'
+            'name' => 'The Dark Knight',
+            'director' => 'Christopher Nolan',
+            'releaseYear' => 2008,
         ],
 
         [
-            'name' => 'The Martian',
-            'author' => 'Andy Weir',
-            'releaseYear' => 2011,
-            'purchaseUrl' => 'http://example.com'
+            'name' => 'Forward Unto Dawn',
+            'director' => 'Stewart Hendler',
+            'releaseYear' => 2012,
+        ],
+
+        [
+            'name' => "Jurassic Park",
+            'director' => 'Steven Spielberg',
+            'releaseYear' => 1993
         ]
     ];
 
-    function filterByAuthor($books, $author)
+    function filterByYear($items, $year)
     {
-        $filteredBooks = [];
+        $filteredItems = [];
 
-        foreach ($books as $book) {
-            if ($book['author'] === $author) {
-                $filteredBooks[] = $book;
+        foreach ($items as $item) {
+            if ($item['releaseYear'] > $year) {
+                $filteredItems[] = $item;
             }
         }
-        return $filteredBooks;
+        return $filteredItems;
     }
+
+    $filterMovies = filterByYear($movies, 2000);
 
     ?>
 
     <ul>
-        <?php foreach (filterByAuthor($books, 'Philip k. Dick') as $book) : ?>
+        <?php foreach ($filterMovies as $movie) : ?>
             <li>
-                <a href="<?= $book['purchaseUrl'] ?>">
-                    <?= $book['name']; ?> (<?= $book['releaseYear'] ?>)
-                </a>
+                <?= $movie['name']; ?>. <?= $movie['releaseYear'] ?>. By <?= $movie['director'] ?>;
             </li>
+
         <?php endforeach; ?>
     </ul>
 
