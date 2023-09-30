@@ -38,19 +38,21 @@
         ]
     ];
 
-    function filterByYear($items, $year)
+    function filter($items, $fn)
     {
         $filteredItems = [];
 
         foreach ($items as $item) {
-            if ($item['releaseYear'] > $year) {
+            if ($fn($item)) {
                 $filteredItems[] = $item;
             }
         }
         return $filteredItems;
     }
 
-    $filterMovies = filterByYear($movies, 2000);
+    $filterMovies = filter($movies, function ($movie) {
+        return $movie['releaseYear'] < 2000;
+    });
 
     ?>
 
