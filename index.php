@@ -1,70 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$movies = [
+    [
+        'name' => 'Star Wars: A New Hope',
+        'director' => 'George Lucas',
+        'releaseYear' => 1977,
+        'purchaseUrl' => 'http://example.com'
+    ],
 
-<head>
-    <meta charset="UTF-8">
-    <title>Demo</title>
+    [
+        'name' => 'The Dark Knight',
+        'director' => 'Christopher Nolan',
+        'releaseYear' => 2008,
+        'purchaseUrl' => 'http://example.com'
+    ],
 
-</head>
+    [
+        'name' => 'Forward Unto Dawn',
+        'director' => 'Stewart Hendler',
+        'releaseYear' => 2012,
+        'purchaseUrl' => 'http://example.com'
+    ],
 
-<body>
+    [
+        'name' => "Jurassic Park",
+        'director' => 'Steven Spielberg',
+        'releaseYear' => 1993,
+        'purchaseUrl' => 'http://example.com'
+    ]
+];
 
-    <h1>Recommended Books</h1>
+function filter($items, $fn)
+{
+    $filteredItems = [];
 
-    <?php
-    $movies = [
-        [
-            'name' => 'Star Wars: A New Hope',
-            'director' => 'George Lucas',
-            'releaseYear' => 1977,
-        ],
-
-        [
-            'name' => 'The Dark Knight',
-            'director' => 'Christopher Nolan',
-            'releaseYear' => 2008,
-        ],
-
-        [
-            'name' => 'Forward Unto Dawn',
-            'director' => 'Stewart Hendler',
-            'releaseYear' => 2012,
-        ],
-
-        [
-            'name' => "Jurassic Park",
-            'director' => 'Steven Spielberg',
-            'releaseYear' => 1993
-        ]
-    ];
-
-    function filter($items, $fn)
-    {
-        $filteredItems = [];
-
-        foreach ($items as $item) {
-            if ($fn($item)) {
-                $filteredItems[] = $item;
-            }
+    foreach ($items as $item) {
+        if ($fn($item)) {
+            $filteredItems[] = $item;
         }
-        return $filteredItems;
     }
+    return $filteredItems;
+}
 
-    $filterMovies = filter($movies, function ($movie) {
-        return $movie['releaseYear'] < 2000;
-    });
-
-    ?>
-
-    <ul>
-        <?php foreach ($filterMovies as $movie) : ?>
-            <li>
-                <?= $movie['name']; ?>. <?= $movie['releaseYear'] ?>. By <?= $movie['director'] ?>;
-            </li>
-
-        <?php endforeach; ?>
-    </ul>
-
-</body>
-
-</html>
+$filterMovies = array_filter($movies, function ($movie) {
+    return $movie['releaseYear'] > 1980 && $movie['releaseYear'] < 2023;
+});
