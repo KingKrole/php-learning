@@ -1,4 +1,5 @@
 <?php
+
 $movies = [
     [
         'name' => 'Star Wars: A New Hope',
@@ -44,3 +45,5 @@ function filter($items, $fn)
 $filterMovies = array_filter($movies, function ($movie) {
     return $movie['releaseYear'] > 1980 && $movie['releaseYear'] < 2023;
 });
+
+require "index.view.php";
