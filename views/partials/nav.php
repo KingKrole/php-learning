@@ -11,10 +11,10 @@
                         <a href="/" class="<?= urlIs('/') ? 'bg-gray-900 text white' : 'text-gray-300' ?>
                         rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
 
-                        <a href="/about.php" class="<?= urlIs('/about.php') ? 'bg-gray-900 text white' : 'text-gray-300' ?>
+                        <a href="/about" class="<?= urlIs('/about') ? 'bg-gray-900 text white' : 'text-gray-300' ?>
                             rounded-md px-3 py-2 text-sm font-medium">About Us</a>
 
-                        <a href="/contact.php" class="<?= urlIs('/contact.php') ? 'bg-gray-900 text white' : 'text-gray-300' ?>
+                        <a href="/contact" class="<?= urlIs('/contact') ? 'bg-gray-900 text white' : 'text-gray-300' ?>
                              rounded-md px-3 py-2 text-sm font-medium">Contact Us</a>
 
                     </div>
